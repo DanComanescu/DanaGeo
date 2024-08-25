@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Linktree-style Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&family=Protest+Riot&display=swap" rel="stylesheet">
+    <style>
+        .protest-riot-regular {
+  font-family: "Protest Riot", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+   
+        body {
+            margin: 0;
+            font-family: 'Protest Riot', sans-serif;
+            background: radial-gradient(circle, #8e44ad, #e74c3c);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        #profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #name {
+            font-size: 30px;
+            margin-top: 10px;
+        }
+
+        #city {
+            font-size: 20px;
+        }
+
+        #link-button {
+            background-color: #2cabff;
+            color: #fff;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 18px;
+            margin-top: 20px;
+            border: 0px 2px 2px 0px solid #000; /* Black border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: pulse 3s infinite;
+        }
+
+        #content-message {
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #active-now-button {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #green-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 1s infinite;
+        }
+
+        #active-now {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 18px;
+            margin-right: 5px;
+            font-family: 'Protest Riot', sans-serif;
+            border: 0px 2px 2px 0px solid #000; /* Black border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            pointer-events: none; /* Make the button unclickable */
+        }
+           @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(0.9);
+            }
+        }
+
+        /* Media query for smaller screens (e.g., mobile devices) */
+        @media screen and (max-width: 600px) {
+            #profile-picture {
+                margin-top: 10px;
+                width: 150px;
+                height: 150px;
+            }
+
+            #name {
+                font-size: 28px;
+            }
+
+            #city {
+                font-size: 23px;
+            }
+
+            #link-button {
+                margin-bottom: 10px;
+                font-size: 16px;
+            }
+
+            #content-message {
+                font-size: 18px;
+            }
+
+            #active-now-button {
+                margin-top: 10px;
+            }
+
+            #green-dot {
+                width: 10px;
+                height: 10px;
+                margin-right: 3px;
+            }
+
+            #active-now {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="profile-container">
+        <div id="profile-picture">
+            <!-- Replace the src attribute with your actual profile picture URL -->
+            <img src="/photos/IMG_4478_(1).jpg" alt="Profile Picture">
+        </div>
+        <div id="name">Ana✨</div>
+    </div>
+    <p id="city"></p>
+    <p id="content-message">Looking for someone to shoot content with 💦</p>
+    <!-- Add your link and href attribute to the button -->
+    <a id="link-button" href="https://your-link-url.com" target="_blank">CHAT WITH ME 🔞</a>
+
+   
+
+    <div id="active-now-button">
+        <div id="green-dot"></div>
+        <button id="active-now">Active Now</button>
+    </div>
+
+    <script>
+        // Function to fetch the user's city using their IP address
+        function getUserCity() {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const cityElement = document.getElementById('city');
+                    cityElement.textContent = `Currently in ${data.city || 'Unknown City'}📍`;
+                })
+                .catch(error => {
+                    console.error('Error fetching user location:', error);
+                });
+        }
+
+        // Call the function when the page loads
+        window.onload = getUserCity;
+    </script>
+</body>
+</html>
+
